@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:id="@+id/conteinerForOnlyOneMember"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/hint_name"
+        android:ems="10"
+        android:textSize="6pt"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/name_editText"
+        android:layout_weight="1" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/hint_sername"
+        android:ems="10"
+        android:textSize="6pt"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/surname_editText"
+        android:layout_weight="1" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/hint_pobatkovi"
+        android:ems="10"
+        android:textSize="6pt"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/secName_editText"
+        android:layout_weight="1" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/round_button"
+        android:id="@+id/deleteMember_button"
+        android:drawableTop="@android:drawable/ic_delete"
+        android:layout_margin="@dimen/little_but_margin"
+        />
+
+</LinearLayout>

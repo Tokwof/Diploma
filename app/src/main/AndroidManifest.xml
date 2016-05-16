@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="marchenko.com.mydiplomaormlite">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.ui_general.ExpeditionListActivity"
+            android:label="@string/header_list_of_expeditions"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.ui_general.CreateExpeditionActivity"
+            android:label="@string/header_expedition"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.ui_general.ExpeditionInfoActivity"
+            android:label="@string/header_expedition_info"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.ui_general.CurrentIntervalActivity"
+            android:label="@string/title_activity_current_day"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.ui_general.GroupsListActivity"
+            android:label="@string/title_item_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.ui_general.ItemDetailActivity"
+            android:label="@string/title_item_detail"
+            android:parentActivityName=".ui.ui_general.GroupsListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.ui_general.GroupsListActivity" />
+        </activity>
+        <activity
+            android:name=".ui.ui_avtomat_meteor_syst.FillMeteorsDataActivity"
+            android:label="@string/interval"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

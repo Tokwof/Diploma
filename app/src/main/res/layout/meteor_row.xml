@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+        <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/id_textView"
+                android:background="@drawable/cell_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                 />
+
+
+            <EditText
+                android:id="@+id/zenith_distance_editText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/cell_shape"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="5"
+                android:singleLine="true"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/p_editText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/cell_shape"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:maxLength="5"
+                android:singleLine="true"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/dashed_p_editText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/cell_shape"
+                android:gravity="center"
+                android:maxLength="5"
+                android:singleLine="true"
+                android:inputType="numberDecimal"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/length_editText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/cell_shape"
+                android:gravity="center"
+                android:maxLength="5"
+                android:singleLine="true"
+                android:inputType="numberDecimal"
+                android:padding="5dp" />
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/round_button"
+                android:id="@+id/deleteMeteorRow_button"
+                android:drawableTop="@android:drawable/ic_delete"
+                android:layout_marginLeft="@dimen/little_but_margin"
+                />
+
+        </TableRow>
+
+

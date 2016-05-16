@@ -1,0 +1,138 @@
+<resources>
+    <string name="app_name">MyDiplomaORMLite</string>
+    <string name="action_settings">Settings</string>
+    <string name="expedition_name">Название экспедиции</string>
+    <string name="expedition_mission">Цель экспедиции</string>
+    <string name="expedition_latitude">Широта местности</string>
+    <string name="expedition_startdata">Дата начала</string>
+    <string name="save">Сохранить</string>
+    <string name="delete">Удалить</string>
+    <string name="edit">Редактировать</string>
+    <string name="cancel">Отмена</string>
+    <string name="latitude_text">
+        "Широта места наблюдения"
+    </string>
+    <string name="all_days_text">
+        "ВСЕ ДНИ НАБЛЮДЕНИЙ"
+    </string>
+    <string name="degree_sign">
+        "&#176;"
+    </string>
+    <string name="min_sign">
+        "\'"
+    </string>
+    <string name="sec_sign">
+        "\""
+    </string>
+    <string name="degree_text">
+        "град."
+    </string>
+    <string name="min_text">
+        "мин."
+    </string>
+    <string name="count_text">
+        "Рассчитать"
+    </string>
+    <string name="sec_text">
+        "сек."
+    </string>
+    <string name="header_list_of_expeditions">
+        "Экспедиции"
+    </string>
+    <string name="header_expedition">
+        "Экспедиция"
+    </string>
+    <string name="header_expedition_info">
+        "Инфо"
+    </string>
+    <string name="all_members">
+        "ВСЕ УЧАСТНИКИ ЭКСПЕДИЦИИ"
+    </string>
+    <string name="add_members">
+        "Добавить участника"
+    </string>
+    <string name="add_day">
+        "Добавить день наблюдений"
+    </string>
+    <string name="adding_intervals">
+        "Добавить интервал"
+    </string>
+    <string name="goto_intervals">
+        "Данные за все интервалы этого дня"
+    </string>
+    <string name="input_meteors_data">
+        "Заполнить данные о метеорах за этот интервал"
+    </string>
+    <string name="hint_name">
+        "имя"
+    </string>
+    <string name="time_pattern">
+        "00:00"
+    </string>
+
+    <string name="groupName_pattern_test">
+        "Зеленые"
+    </string>
+    <string name="hint_sername">
+        "фамилия"
+    </string>
+    <string name="hint_pobatkovi">
+        "отчество"
+    </string>
+    <string name="interval">
+        "Интервал"
+    </string>
+    <string name="title_activity_create_expedition">CreateExpeditionActivity</string>
+    <string name="title_activity_counter_screen">CounterScreen</string>
+    <string name="title_activity_expedition_info">ExpeditionInfoActivity</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+    </string>
+    <string name="title_activity_current_day">CurrentDayActivity</string>
+    <string name="section_format">Hello World от группы: %1$d</string>
+    <string name="title_item_list">Группы</string>
+    <string name="title_item_detail">Состав группы</string>
+    <string name="clouds">Обл-сть</string>
+    <string name="moon">Фаза луны</string>
+    <string name="fio">ФИО</string>
+    <string name="moon_height">Высота луны</string>
+    <string name="radiant_height">Высота радианта</string>
+    <string name="clear_table">Очистить таблицу</string>
+
+    <string name="begin_magnitude">M1</string>
+    <string name="end_magnitude">M2</string>
+    <string name="begin_state">Cост.1</string>
+    <string name="end_state">Cост.2</string>
+
+
+    <string name="center_constellation">Созвездие</string>
+    <string name="center_star">O</string>
+    <string name="direction">H</string>
+
+    <string name="zenith_distance_text">
+        "Z"
+    </string>
+
+    <string name="draw_on_map">
+        "Прорисовать на карте"
+    </string>
+
+    <string name="p_text">
+        "P"
+    </string>
+
+    <string name="dashed_p_text">
+        "P\'"
+    </string>
+
+    <string name="num">
+        "№"
+    </string>
+    <string name="title_activity_fill_meteors_data">FillMeteorsDataActivity</string>
+
+    <string name="horizontal_coord">Горизонтальные координаты всех метеоров данного интервала</string>
+
+    <string name="equatorial_coord">Экваториальные координаты всех метеоров данного интервала</string>
+    <string name="angle_length">λ</string>
+</resources>
