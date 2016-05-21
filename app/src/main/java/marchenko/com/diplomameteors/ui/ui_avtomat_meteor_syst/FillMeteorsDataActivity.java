@@ -205,7 +205,6 @@ public class FillMeteorsDataActivity extends AppCompatActivity {
                 return meteor.setP(dResult);
             case "etLength":
                 dResult = getCorrectDouble(data);
-                Log.d("Tag", "etLength hhhhhhh" + dResult +" "+data);
                 return meteor.setLength(dResult);
         }
         return false;
@@ -226,7 +225,9 @@ public class FillMeteorsDataActivity extends AppCompatActivity {
         for (Meteor meteor : meteorsList) {
             HorizontalCoordinates horizontalCoordinates = new HorizontalCoordinates();
             horizontalCoordinates.countAzimuth(meteor.getPprime());
-            sbHorizontCoord.append("\nN ").append(meteor.getNumber()).append(", азимут = ").append(horizontalCoordinates.getAzimuth());
+            String formattedAzimuth = String.format("%.2f", horizontalCoordinates.getAzimuth());
+            sbHorizontCoord.append("\n№").append(meteor.getNumber()).append(", азимут = ").append(formattedAzimuth);
+            sbHorizontCoord.append(".");
 
             EquatorialСoordinate equatorialСoordinate = new EquatorialСoordinate();
             CounterEquatorialCoordinate counter = new CounterEquatorialCoordinate();
@@ -239,8 +240,11 @@ public class FillMeteorsDataActivity extends AppCompatActivity {
             equatorialСoordinate.setMeteor(meteor);
             equatorialСoordinate.setQuadrantNumber(counter.getNumberOfQuadrant());
             eqCoordDao.insertEqСoord(equatorialСoordinate);
-            sbEquatorialCoord.append("\nN ").append(meteor.getNumber()).append(", склонение = ").append(delta);
-            sbEquatorialCoord.append(", часовой угол = ").append(equatorialСoordinate.getHourAngleInHour());
+
+            String formattedDelta = String.format("%.2f", delta);
+            String formattedHourAngleInHour = String.format("%.2f", equatorialСoordinate.getHourAngleInHour());
+            sbEquatorialCoord.append("\nN ").append(meteor.getNumber()).append(", склонение = ").append(formattedDelta);
+            sbEquatorialCoord.append(", часовой угол = ").append(formattedHourAngleInHour);
         }
         tvHorizCoor.setText(sbHorizontCoord);
         tvEquatCoor.setText(sbEquatorialCoord);

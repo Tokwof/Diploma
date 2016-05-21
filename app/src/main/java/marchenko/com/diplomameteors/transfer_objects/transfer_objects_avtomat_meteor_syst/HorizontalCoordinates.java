@@ -1,5 +1,9 @@
 package marchenko.com.diplomameteors.transfer_objects.transfer_objects_avtomat_meteor_syst;
 
+import android.util.Log;
+
+import marchenko.com.diplomameteors.transfer_objects.transfer_objects_general.Meteor;
+
 public class HorizontalCoordinates {
   //  Meteor meteor;
     /**
@@ -11,19 +15,16 @@ public class HorizontalCoordinates {
      * Горизонтальные координаты:
      * 2) высота
      */
- //   private double h;
+    private double h;
 
- //   public HorizontalCoordinates(Meteor meteor) {
- //       this.meteor = meteor;
- //   }
 
-//    public double getH() {
-//        return h;
-//    }
+    public double getH() {
+        return h;
+    }
 
-//    public void setH(double h) {
-//        this.h = h;
-//    }
+    public void setH(double h) {
+        this.h = h;
+    }
 
     public double getAzimuth() {
         return azimuth;
@@ -35,10 +36,9 @@ public class HorizontalCoordinates {
     }
 
     // Высота ( = 90 – Z , где Z – зенитное расстояние)
-//    public void countHeight() {
-//        setH(90 - meteor.getZenit());
-//        Log.d("MY_TAG", "h = " + h);
-//    }
+    public void countHeight(int zenit) {
+        setH(90 - zenit);
+    }
 
     /**
      * Расчёт астрономического азимута

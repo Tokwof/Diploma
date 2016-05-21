@@ -100,13 +100,11 @@ public class ItemDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    ///////////////////////////////
     public void clickBeginIntervalTime(View v){
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getFragmentManager(),"TimePicker");
     }
 
-    ///////////////////////////////
     public void clickAddIntevals(View v){
     }
 

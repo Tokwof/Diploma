@@ -40,10 +40,6 @@ public class DrawingSaving {
         // рисуем на созданном холсте копию исходной карты
         canvas.drawBitmap(bmpMap, 0, 0, paint);
 
-        //CounterEquatorialCoordinate counter = new CounterEquatorialCoordinate();
-        //counter.countMiddleMeteorPointCoord();
-        //counter.countBeginMeteorPointCoord();
-        //counter.countEndMeteorPointCoord();
         OrmSqliteMeteorDao meteorDao = new OrmSqliteMeteorDao();
 
 
@@ -51,13 +47,10 @@ public class DrawingSaving {
             MeteorPath meteorPath = new MeteorPath();
             Meteor curMeteor = meteorDao.findMeteor(eqCoord.getMeteor().getId());
             meteorPath.countMiddleMeteorPointCoord(eqCoord.getHourAngleInDegree(), eqCoord.getDeclension(), eqCoord.getQuadrantNumber());
-            Log.d("tag", "!!! curMeteor.getP()="+curMeteor.getP()+"  curMeteor.getLength()="+ curMeteor.getLength());
             meteorPath.countBeginEndMeteorPointCoord(curMeteor.getP(), curMeteor.getLength());
             canvas.drawLine((int) meteorPath.getxBeginMeteorLine(), (int) meteorPath.getyBeginMeteorLine(),
                     (int) meteorPath.getxEndMeteorLine(), (int) meteorPath.getyEndMeteorLine(), paint);
-            Log.d("Tag", "after draw ");
         }
-        Log.d("Tag", "after fooor ");
         // сохраняем карту с прорисованными линиями
         savePictToStorage(newBitmap, MapProperties.NAME_RESULT_MAP);
     }

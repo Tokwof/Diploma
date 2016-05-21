@@ -9,9 +9,6 @@ import marchenko.com.diplomameteors.dao.PersonDao;
 import marchenko.com.diplomameteors.mydb.DatabaseManager;
 import marchenko.com.diplomameteors.transfer_objects.transfer_objects_general.Person;
 
-/**
- * c26
- */
 public class OrmSqlitePersonDao implements PersonDao {
     Dao<Person, Integer> personDao = DatabaseManager.getInstance().getHelper().getPersonDao();
 
