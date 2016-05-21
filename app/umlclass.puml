@@ -1,0 +1,41 @@
+@startuml
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+Object[] elementData
+size()
+}
+
+class Person{
+    private int id;
+    private String name;
+    private String surname;
+    private String middleName;
+}
+
+class Interval {
+    private int id;
+    private int number;
+    private Date timeBegin;
+    private Date timeEnd;
+    private double clouds;
+    private double moon;
+    private int moonHeight;
+    private int radiantHeight;
+    private Day day;
+    private GroupOfResearcher group;
+    }
+class GroupOfResearcher {
+}
+@enduml

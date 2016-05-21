@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="marchenko.com.mydiplomaormlite.ui.ui_avtomat_meteor_syst.FillMeteorsDataActivity">
+    tools:context="marchenko.com.diplomameteors.ui.ui_avtomat_meteor_syst.FillMeteorsDataActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

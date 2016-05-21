@@ -12,7 +12,7 @@
         android:orientation="vertical"
 
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="marchenko.com.mydiplomaormlite.ui.ui_avtomat_meteor_syst.FillMeteorsDataActivity"
+        tools:context="marchenko.com.diplomameteors.ui.ui_avtomat_meteor_syst.FillMeteorsDataActivity"
         tools:showIn="@layout/activity_fill_meteors_data">
 
 
