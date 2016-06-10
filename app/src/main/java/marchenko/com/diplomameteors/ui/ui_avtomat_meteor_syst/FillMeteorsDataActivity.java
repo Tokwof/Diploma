@@ -38,6 +38,8 @@ import marchenko.com.diplomameteors.transfer_objects.transfer_objects_general.Eq
 import marchenko.com.diplomameteors.transfer_objects.transfer_objects_general.Meteor;
 
 public class FillMeteorsDataActivity extends AppCompatActivity {
+    private String TAG = "MY_TAG";
+
     String DUMMY_INTERVAL = "22:50";
     private static final String DAY_ID = "dayId";
     private static final String EXPEDITION_ID = "expeditionId";
@@ -199,10 +201,10 @@ public class FillMeteorsDataActivity extends AppCompatActivity {
                 return meteor.setZenit(iResult);
             case "etP":
                 dResult = getCorrectDouble(data);
-                return meteor.setPprime(dResult);
+                return meteor.setP(dResult);
             case "etDashedP":
                 dResult = getCorrectDouble(data);
-                return meteor.setP(dResult);
+                return meteor.setPprime(dResult);
             case "etLength":
                 dResult = getCorrectDouble(data);
                 return meteor.setLength(dResult);
@@ -215,6 +217,8 @@ public class FillMeteorsDataActivity extends AppCompatActivity {
         TextView tvEquatCoor = (TextView) findViewById(R.id.equatorial_coord_textView);
         OrmSqliteExpeditionDao expeditionDao = new OrmSqliteExpeditionDao();
         double latitude = expeditionDao.findExpedition(expeditionId).getLatitude();
+        //double LATITUDE = 49+(58+48.0/60.0)/60.0;
+        Log.d(TAG, "LATITUDE = " + latitude);
 
         OrmSqliteMeteorDao meteorDao = new OrmSqliteMeteorDao();
         OrmSqliteEqСoordDao eqCoordDao = new OrmSqliteEqСoordDao();
@@ -224,9 +228,12 @@ public class FillMeteorsDataActivity extends AppCompatActivity {
 
         for (Meteor meteor : meteorsList) {
             HorizontalCoordinates horizontalCoordinates = new HorizontalCoordinates();
+            Log.d(TAG, "meteor.getPprime="+meteor.getPprime());
             horizontalCoordinates.countAzimuth(meteor.getPprime());
+            horizontalCoordinates.countHeight(meteor.getZenit());
             String formattedAzimuth = String.format("%.2f", horizontalCoordinates.getAzimuth());
             sbHorizontCoord.append("\n№").append(meteor.getNumber()).append(", азимут = ").append(formattedAzimuth);
+            sbHorizontCoord.append(", высота = ").append(String.format("%.2f", horizontalCoordinates.getH()));
             sbHorizontCoord.append(".");
 
             EquatorialСoordinate equatorialСoordinate = new EquatorialСoordinate();
@@ -243,14 +250,12 @@ public class FillMeteorsDataActivity extends AppCompatActivity {
 
             String formattedDelta = String.format("%.2f", delta);
             String formattedHourAngleInHour = String.format("%.2f", equatorialСoordinate.getHourAngleInHour());
-            sbEquatorialCoord.append("\nN ").append(meteor.getNumber()).append(", склонение = ").append(formattedDelta);
+            sbEquatorialCoord.append("\n№").append(meteor.getNumber()).append(", склонение = ").append(formattedDelta);
             sbEquatorialCoord.append(", часовой угол = ").append(formattedHourAngleInHour);
+            sbEquatorialCoord.append(".");
         }
         tvHorizCoor.setText(sbHorizontCoord);
         tvEquatCoor.setText(sbEquatorialCoord);
-
-        //Log.d();
-//        horizontalCoordinates.countHeight();
     }
 
     public void clickDrawOnMap(View view) {
@@ -310,11 +315,10 @@ public class FillMeteorsDataActivity extends AppCompatActivity {
             meteorsArray[i-1].setZenit(getTextFromEditTextInt(vZ));
             meteorsArray[i-1].setP(getTextFromEditTextDouble(vP));
             meteorsArray[i-1].setPprime(getTextFromEditTextDouble(vPP));
-            Log.d("Tag", "getTextFromEditTextDouble(vLength) = " + getTextFromEditTextDouble(vLength));
+            Log.d(TAG, "getTextFromEditTextDouble(vLength) = " + getTextFromEditTextDouble(vLength));
             meteorsArray[i-1].setLength(getTextFromEditTextDouble(vLength));
             meteorsArray[i-1].setNotes("my notes here");
             meteorsArray[i-1].setSource("my source here");
-            ////
         }
         OrmSqliteMeteorDao meteorDao = new OrmSqliteMeteorDao();
         meteorDao.insertListMeteors(meteorsArray);

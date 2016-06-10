@@ -3,6 +3,7 @@ package marchenko.com.diplomameteors.counters;
 import android.util.Log;
 
 public class CounterEquatorialCoordinate {
+    private String TAG = "MY_TAG";
     public double getNumberOfQuadrant() {
         return numberOfQuadrant;
     }
@@ -19,11 +20,14 @@ public class CounterEquatorialCoordinate {
         double cosZ = Math.cos(Math.toRadians(zenit));
         double cosA = Math.cos(Math.toRadians(azimut));
 
+        Log.d(TAG, "latitude = " + latitude);
+        Log.d(TAG, "zenit = " + zenit);
+        Log.d(TAG, "azimut = " + azimut);
         sinDelta = sinFi * cosZ - cosFi * sinZ * cosA;
-     //   Log.d("MY_TAG", "sinDelta = " + sinDelta);
+        Log.d(TAG, "sinDelta = " + sinDelta);
         delta = Math.toDegrees(Math.asin(sinDelta));
-        Log.d("MY_TAG", "delta = " + delta);
-     //   Log.d("MY_TAG", "OTHER delta = " + (meteorProperties.getH() - 90 + meteorProperties.getLatitudeObservations_fi_degrees()));
+        Log.d(TAG, "delta = " + delta);
+     //   Log.d(TAG, "OTHER delta = " + (meteorProperties.getH() - 90 + meteorProperties.getLatitudeObservations_fi_degrees()));
        // equatorialСoordinate.setDeclension(delta);
         return delta;//equatorialСoordinate.getDeclension();
     }
@@ -47,18 +51,18 @@ public class CounterEquatorialCoordinate {
         t2 = Math.toDegrees(Math.acos(cosT));
         // выбираем t
         t = getRightT(t, sinT, t1, cosT, t2);
-   //     Log.d("MY_TAG", "meteorProperties.getNumberOfQuadrant() = "+ meteorPath.getNumberOfQuadrant());
+       // Log.d(TAG, "meteorProperties.getNumberOfQuadrant() = "+ meteorPath.getNumberOfQuadrant());
         // устанавливаем градусную меру
         // устанавливаем временную меру
-     //   Log.d("MY_TAG", "sinT = " + sinT + " t1 = " + t1);
-     //   Log.d("MY_TAG", "sinZ = " + sinZ + " sinA = " + sinA);
-     //   Log.d("MY_TAG", "cosDelta = " + cosDelta + " cosT = " + cosT);
-      //  Log.d("MY_TAG", "cosFi = " + cosFi + " sinFi = " + sinFi);
-     //   Log.d("MY_TAG", "cosA = " + cosA + " cosZ = " + cosZ + " t2 = " + t2);
+        Log.d(TAG, "sinT = " + sinT + " t1 = " + t1);
+        Log.d(TAG, "sinZ = " + sinZ + " sinA = " + sinA);
+        Log.d(TAG, "cosDelta = " + cosDelta + " cosT = " + cosT);
+        Log.d(TAG, "cosFi = " + cosFi + " sinFi = " + sinFi);
+        Log.d(TAG, "cosA = " + cosA + " cosZ = " + cosZ + " t2 = " + t2);
 
-        //equatorialСoordinate.setHourAngleInHour(t / 15.0);
-     //   Log.d("MY_TAG", "t degree  = " + t);
-    //    Log.d("MY_TAG", "t hour  = " + equatorialСoordinate.getHourAngleInHour());
+     //   equatorialСoordinate.setHourAngleInHour(t / 15.0);
+        Log.d(TAG, "t degree  = " + t);
+     //   Log.d(TAG, "t hour  = " + equatorialСoordinate.getHourAngleInHour());
         return t;
     }
 

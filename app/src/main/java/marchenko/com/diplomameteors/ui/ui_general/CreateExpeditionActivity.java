@@ -3,18 +3,22 @@ package marchenko.com.diplomameteors.ui.ui_general;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -30,6 +34,7 @@ import marchenko.com.diplomameteors.transfer_objects.transfer_objects_general.Ex
  * Форма создания новой экспедиции.
  */
 public class CreateExpeditionActivity extends AppCompatActivity implements View.OnClickListener {
+    private String TAG = "MY_TAG";
     private static final String EXPEDITION_ID = "expeditionId";
     private final DateFormat df = new SimpleDateFormat(Day.DATE_FORMAT);
     private final SimpleDateFormat dateFormatter = new SimpleDateFormat(Day.DATE_FORMAT);
@@ -113,8 +118,8 @@ public class CreateExpeditionActivity extends AppCompatActivity implements View.
             startActivity(new Intent(this, ExpeditionListActivity.class));
             finish();
         } else if (view == buttonSaveExpedition) {
-            Expedition newVersionExpedition = saveToObj();
-            OrmSqliteExpeditionDao expeditionDao = new OrmSqliteExpeditionDao();
+            final Expedition newVersionExpedition = saveToObj();
+            final OrmSqliteExpeditionDao expeditionDao = new OrmSqliteExpeditionDao();
             OrmSqliteDayDao dayDao = new OrmSqliteDayDao();
             boolean alreadyCreated = false;
             if (newVersionExpedition.getId() != 0) {
@@ -128,12 +133,43 @@ public class CreateExpeditionActivity extends AppCompatActivity implements View.
                     alreadyCreated = true;
                 }
             }
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    getResources().getString(R.string.change_saving),
+                    Toast.LENGTH_LONG);
+            toast.show();
+
             if (alreadyCreated) {
-                finish();
+                Thread thread = new Thread(){
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(3500); // As I am using LENGTH_LONG in Toast
+                            finish();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                thread.start();
+
             } else {
-                expeditionDao.createExpedition(newVersionExpedition);
-                ExpeditionInfoActivity.callMe(CreateExpeditionActivity.this, newVersionExpedition.getId());
+                Thread thread = new Thread(){
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(3500); // As I am using LENGTH_LONG in Toast
+                            expeditionDao.createExpedition(newVersionExpedition);
+                            ExpeditionInfoActivity.callMe(CreateExpeditionActivity.this, newVersionExpedition.getId());
+                            finish();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                thread.start();
+
             }
+
         }
     }
 
@@ -205,7 +241,7 @@ public class CreateExpeditionActivity extends AppCompatActivity implements View.
                 etLatitudeDigree.setTextColor(acceptedTextColor(validData));
                 etLatitudeMin.setTextColor(acceptedTextColor(validData));
                 etLatitudeSec.setTextColor(acceptedTextColor(validData));
-                Log.d("MY_TAG", "wholeRes2_1 = " + wholeRes);
+                Log.d(TAG, "wholeRes2_1 = " + wholeRes);
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -236,7 +272,7 @@ public class CreateExpeditionActivity extends AppCompatActivity implements View.
                 etLatitudeMin.setTextColor(acceptedTextColor(validData));
                 double wholeRes = dataDig + (double) resultMin / 60.0 + (double) dataSec / 3600.0;
                 boolean validData2 = expeditBuf.setLatitude(wholeRes);
-                Log.d("MY_TAG", "wholeRes2 = " + wholeRes);
+                Log.d(TAG, "wholeRes2 = " + wholeRes);
                 etLatitudeDigree.setTextColor(acceptedTextColor(validData2));
                 etLatitudeSec.setTextColor(acceptedTextColor(validData2));
             }
@@ -270,7 +306,7 @@ public class CreateExpeditionActivity extends AppCompatActivity implements View.
                 // if(validData) {
                 double wholeRes = dataDig + (double) resultSec / 3600.0 + dataMin;
                 boolean validData2 = expeditBuf.setLatitude(wholeRes);
-                Log.d("MY_TAG", "wholeRes2 = " + wholeRes);
+                Log.d(TAG, "wholeRes2 = " + wholeRes);
                 etLatitudeDigree.setTextColor(acceptedTextColor(validData2));
                 etLatitudeMin.setTextColor(acceptedTextColor(validData2));
 

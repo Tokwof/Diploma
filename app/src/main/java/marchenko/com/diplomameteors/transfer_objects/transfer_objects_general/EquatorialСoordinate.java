@@ -20,6 +20,9 @@ public class EquatorialСoordinate {
      * Экваториальные координаты:
      * 2) часовой угол (t) - в часах (0h..24h)
      */
+
+    @DatabaseField
+    private double right_ascension;
     @DatabaseField
     private double hourAngleInHour;
     /**
@@ -111,6 +114,13 @@ public class EquatorialСoordinate {
             return true;
         }
         return false;
+    }
+    public double getRight_ascension() {
+        return right_ascension;
+    }
+
+    public void setRight_ascension(double right_ascension) {
+        this.right_ascension = right_ascension;
     }
 
 }

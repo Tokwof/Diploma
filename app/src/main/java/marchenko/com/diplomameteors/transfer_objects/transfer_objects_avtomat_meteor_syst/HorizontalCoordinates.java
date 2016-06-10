@@ -5,6 +5,7 @@ import android.util.Log;
 import marchenko.com.diplomameteors.transfer_objects.transfer_objects_general.Meteor;
 
 public class HorizontalCoordinates {
+    private String TAG = "MY_TAG";
   //  Meteor meteor;
     /**
      * Горизонтальные координаты:
@@ -45,7 +46,8 @@ public class HorizontalCoordinates {
      * @param pprime P' в градусном значении
      */
     public void countAzimuth(double pprime) {
+        Log.d(TAG, "pprime="+pprime);
         this.azimuth = (180 + pprime) % 360;
-
+        Log.d(TAG, "azimuth="+azimuth);
     }
 }

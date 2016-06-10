@@ -239,7 +239,7 @@ public class Meteor {
         final double min = 0;
         final double max = 12;
         if (pprime >= min && pprime < max) {
-            this.pprime = pprime * 30;
+            this.pprime = pprime * 15;
             return true;
         }
         return false;

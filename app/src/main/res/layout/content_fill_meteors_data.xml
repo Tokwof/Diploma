@@ -118,6 +118,12 @@
         android:layout_margin="@dimen/activity_vertical_margin"
         android:text="@string/count_text" />
 
+    <View
+        android:layout_width="match_parent"
+        android:background="@drawable/post_new_separator"
+        android:layout_height="wrap_content">
+    </View>
+
     <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -131,6 +137,11 @@
         android:id="@+id/horizontal_coord_textView"
          />
 
+    <View
+        android:layout_width="match_parent"
+        android:background="@drawable/post_new_separator"
+        android:layout_height="wrap_content">
+    </View>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

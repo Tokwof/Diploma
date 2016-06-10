@@ -44,8 +44,16 @@ public class DrawingSaving {
 
 
         for(EquatorialСoordinate eqCoord : eqCoordsList) {
+
+           // double betaAngle;
+
+
             MeteorPath meteorPath = new MeteorPath();
             Meteor curMeteor = meteorDao.findMeteor(eqCoord.getMeteor().getId());
+
+
+           // betaAngle=eqCoord.getHourAngleInDegree()
+
             meteorPath.countMiddleMeteorPointCoord(eqCoord.getHourAngleInDegree(), eqCoord.getDeclension(), eqCoord.getQuadrantNumber());
             meteorPath.countBeginEndMeteorPointCoord(curMeteor.getP(), curMeteor.getLength());
             canvas.drawLine((int) meteorPath.getxBeginMeteorLine(), (int) meteorPath.getyBeginMeteorLine(),

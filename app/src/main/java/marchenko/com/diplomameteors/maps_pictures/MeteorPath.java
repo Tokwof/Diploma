@@ -3,7 +3,7 @@ package marchenko.com.diplomameteors.maps_pictures;
 import android.util.Log;
 
 public class MeteorPath {
-
+    private String TAG = "MY_TAG";
     private double numberOfQuadrant;
     private double xMiddleMeteorLine;
     private double yMiddleMeteorLine;
@@ -58,7 +58,7 @@ public class MeteorPath {
         double radiusForNewArc = MapProperties.HOR_RADIUS - part;//333,805
 
         double k = (Math.tan(Math.toRadians(90 - hourAngleInDegree)));
-        Log.d("MY_TAG", "k = " + k);
+        Log.d(TAG, "k = " + k);
         // 1) пусть зенит будет с координатами (0, 0).
         // уравнение прямой y=kx (1)
         // уравнение окружности y=x^2 + y^2 = radiusForNewArc^2; (2)
@@ -70,10 +70,10 @@ public class MeteorPath {
         double x2, y2;
         x1 = Math.sqrt(Math.pow(radiusForNewArc, 2) / (1 + Math.pow(k, 2))); //(5)
         x2 = -Math.sqrt(Math.pow(radiusForNewArc, 2) / (1 + Math.pow(k, 2))); //(6)
-        Log.d("MY_TAG", "x1 = " + x1 + "; x2 = " + x2);
+        Log.d(TAG, "x1 = " + x1 + "; x2 = " + x2);
         y1 = k * x1; //(7)
         y2 = k * x2; //(8)
-        Log.d("MY_TAG", "y1 = " + y1 + "; y2 = " + y2);
+        Log.d(TAG, "y1 = " + y1 + "; y2 = " + y2);
         // У нас два варианта точек, но мы знаем, в каком квадратне должна она лежать
         // после расчёта часового угла. Отталкиваясь от значения квадранта мы выбираем пару (х, у)
         //double x = 0, y = 0;
@@ -82,7 +82,8 @@ public class MeteorPath {
         // 2) расчитываем прорисовку, учитывая сдвиги пикселей по карте (ось у на карте увеличивается в противоположном направлении)
         setxMiddleMeteorLine(getxMiddleMeteorLine() + MapProperties.CENTER_X);
         setyMiddleMeteorLine(MapProperties.CENTER_Y - getyMiddleMeteorLine());
-        Log.d("MY_TAG", "x = " + getxMiddleMeteorLine() + " y = " + (int) getyMiddleMeteorLine());
+        Log.d(TAG, "xmiddle = " + getxMiddleMeteorLine() + " ymiddle = " + (int) getyMiddleMeteorLine());
+        Log.d(TAG, "numberOfQuadrant="+numberOfQuadrant);
     }
 
     private void chooseXYpairInRightQuadrant(double x1, double y1, double x2, double y2) {
@@ -171,7 +172,7 @@ public class MeteorPath {
     }
 
     private void printErrorMess() {
-        Log.d("MY_TAG", "Должен быть " + numberOfQuadrant +
+        Log.d(TAG, "Должен быть " + numberOfQuadrant +
                 " квадрант, но расчёты координат соответствуют другому расположению!");
     }
 
@@ -187,76 +188,76 @@ public class MeteorPath {
 
         double buf = 0;
         // 1 четверть
-        if (myP > 9 && myP < 12) {
-            if (b1_x < b2_x) {
-            } else {
-                changeXplaces(b1_x, b2_x);
-            }
-            if (b1_y > b2_y) {
-            } else {
-                changeYplaces(b1_y, b2_y);
-            }
-        }
-        // 2 четверть
-        if (myP > 0 && myP < 3) {
-            if (b1_x > b2_x) {
-            } else {
-                changeXplaces(b1_x, b2_x);
-            }
-            if (b1_y > b2_y) {
-            } else {
-                changeYplaces(b1_y, b2_y);
-            }
-        }
-        // 3 четверть
-        if (myP > 3 && myP < 6) {
-            if (b1_x > b2_x) {
-            } else {
-                changeXplaces(b1_x, b2_x);
-            }
-            if (b1_y < b2_y) {
-            } else {
-                changeYplaces(b1_y, b2_y);
-            }
-        }
-        // 4 четверть
-        if (myP > 3 && myP < 6) {
-            if (b1_x < b2_x) {
-            } else {
-                changeXplaces(b1_x, b2_x);
-            }
-            if (b1_y > b2_y) {
-            } else {
-                changeYplaces(b1_y, b2_y);
-            }
-        }
-
-        if (myP == 0) {
-            if (b1_y > b2_y) {
-            } else {
-                changeYplaces(b1_y, b2_y);
-            }
-        }
-        if (myP == 3) {
-            if (b1_x > b2_x) {
-            } else {
-                changeXplaces(b1_x, b2_x);
-            }
-        }
-        if (myP == 6) {
-            if (b1_y < b2_y) {
-            } else {
-                changeYplaces(b1_y, b2_y);
-            }
-        }
-        if (myP == 9) {
-            if (b1_x < b2_x) {
-            } else {
-                changeXplaces(b1_x, b2_x);
-            }
-        }
-          Log.d("Tag","b1_x = "+b1_x + "\t; b2_x = "+b2_x+";\nb1_y = "+b1_y + "\t; b2_y[i] = "+b2_y);
-        Log.d("Tag", "L = "+ L);
+//        if (myP > 9 && myP < 12) {
+//            if (b1_x < b2_x) {
+//            } else {
+//                changeXplaces(b1_x, b2_x);
+//            }
+//            if (b1_y > b2_y) {
+//            } else {
+//                changeYplaces(b1_y, b2_y);
+//            }
+//        }
+//        // 2 четверть
+//        if (myP > 0 && myP < 3) {
+//            if (b1_x > b2_x) {
+//            } else {
+//                changeXplaces(b1_x, b2_x);
+//            }
+//            if (b1_y > b2_y) {
+//            } else {
+//                changeYplaces(b1_y, b2_y);
+//            }
+//        }
+//        // 3 четверть
+//        if (myP > 3 && myP < 6) {
+//            if (b1_x > b2_x) {
+//            } else {
+//                changeXplaces(b1_x, b2_x);
+//            }
+//            if (b1_y < b2_y) {
+//            } else {
+//                changeYplaces(b1_y, b2_y);
+//            }
+//        }
+//        // 4 четверть
+//        if (myP > 3 && myP < 6) {
+//            if (b1_x < b2_x) {
+//            } else {
+//                changeXplaces(b1_x, b2_x);
+//            }
+//            if (b1_y > b2_y) {
+//            } else {
+//                changeYplaces(b1_y, b2_y);
+//            }
+//        }
+//
+//        if (myP == 0) {
+//            if (b1_y > b2_y) {
+//            } else {
+//                changeYplaces(b1_y, b2_y);
+//            }
+//        }
+//        if (myP == 3) {
+//            if (b1_x > b2_x) {
+//            } else {
+//                changeXplaces(b1_x, b2_x);
+//            }
+//        }
+//        if (myP == 6) {
+//            if (b1_y < b2_y) {
+//            } else {
+//                changeYplaces(b1_y, b2_y);
+//            }
+//        }
+//        if (myP == 9) {
+//            if (b1_x < b2_x) {
+//            } else {
+//                changeXplaces(b1_x, b2_x);
+//            }
+//        }
+          Log.d(TAG,"b1_x = "+b1_x + "\t; b2_x = "+b2_x+";\nb1_y = "+b1_y + "\t; b2_y[i] = "+b2_y);
+        Log.d(TAG, "L = "+ L);
 
     }
 
@@ -275,11 +276,11 @@ public class MeteorPath {
     }
 
     static double count_y_B1(double y_c, double L, double Alpha) {
-        return y_c + 0.5 * L * Math.sin(Math.toRadians(Alpha));
+        return y_c - 0.5 * L * Math.sin(Math.toRadians(Alpha));
     }
 
     static double count_y_B2(double y_c, double L, double Alpha) {
-        return y_c - 0.5 * L * Math.sin(Math.toRadians(Alpha));
+        return y_c + 0.5 * L * Math.sin(Math.toRadians(Alpha));
     }
 
     private static void changeYplaces(double b1_y, double b2_y) {
