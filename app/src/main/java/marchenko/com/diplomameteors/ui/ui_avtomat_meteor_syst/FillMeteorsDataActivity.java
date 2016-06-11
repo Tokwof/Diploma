@@ -311,7 +311,7 @@ public class FillMeteorsDataActivity extends AppCompatActivity {
                 View vPP = rawMeteors[i-1].getChildAt(3);
             View vLength = rawMeteors[i-1].getChildAt(4);
             meteorsArray[i-1] = new Meteor();
-            meteorsArray[i-1].setNumber(getTextFromEditTextInt(numberMeteor));
+            meteorsArray[i-1].setNumber(getTextFromTextViewInt(numberMeteor));
             meteorsArray[i-1].setZenit(getTextFromEditTextInt(vZ));
             meteorsArray[i-1].setP(getTextFromEditTextDouble(vP));
             meteorsArray[i-1].setPprime(getTextFromEditTextDouble(vPP));
@@ -336,6 +336,14 @@ public class FillMeteorsDataActivity extends AppCompatActivity {
         int value = 0;
         if (unknownView instanceof EditText) {
             value = Integer.parseInt(((EditText) unknownView).getText().toString());
+        }
+        return value;
+    }
+
+    int getTextFromTextViewInt(View unknownView) {
+        int value = 0;
+        if (unknownView instanceof TextView) {
+            value = Integer.parseInt(((TextView) unknownView).getText().toString());
         }
         return value;
     }

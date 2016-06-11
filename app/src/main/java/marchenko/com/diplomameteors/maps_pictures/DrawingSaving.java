@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.os.Environment;
 import android.util.Log;
 
@@ -29,7 +30,8 @@ public class DrawingSaving {
 
     public void drawingLines(List<EquatorialСoordinate> eqCoordsList) {
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(Color.RED);
+        paint.setColor(Color.GREEN);
+        paint.setStrokeWidth(10.0f);
         // открываем чистую карту
         Bitmap bmpMap = BitmapFactory.decodeResource(context.getResources(), R.drawable.map);
         // создаём новую чистую картинку
@@ -41,7 +43,6 @@ public class DrawingSaving {
         canvas.drawBitmap(bmpMap, 0, 0, paint);
 
         OrmSqliteMeteorDao meteorDao = new OrmSqliteMeteorDao();
-
 
         for(EquatorialСoordinate eqCoord : eqCoordsList) {
 
@@ -56,8 +57,24 @@ public class DrawingSaving {
 
             meteorPath.countMiddleMeteorPointCoord(eqCoord.getHourAngleInDegree(), eqCoord.getDeclension(), eqCoord.getQuadrantNumber());
             meteorPath.countBeginEndMeteorPointCoord(curMeteor.getP(), curMeteor.getLength());
-            canvas.drawLine((int) meteorPath.getxBeginMeteorLine(), (int) meteorPath.getyBeginMeteorLine(),
-                    (int) meteorPath.getxEndMeteorLine(), (int) meteorPath.getyEndMeteorLine(), paint);
+//            canvas.drawLine((int) meteorPath.getxBeginMeteorLine(), (int) meteorPath.getyBeginMeteorLine(),
+//                    (int) meteorPath.getxEndMeteorLine(), (int) meteorPath.getyEndMeteorLine(), paint);
+            Path path = new Path();
+            //path.reset();
+            path.setFillType(Path.FillType.EVEN_ODD);
+            path.moveTo((int) meteorPath.getxBeginMeteorLine()-2, (int) meteorPath.getyBeginMeteorLine());
+            path.lineTo((int) meteorPath.getxBeginMeteorLine()+2, (int) meteorPath.getyBeginMeteorLine());
+            path.lineTo((int) meteorPath.getxEndMeteorLine()+2, (int) meteorPath.getyEndMeteorLine());
+            path.lineTo((int) meteorPath.getxEndMeteorLine()-2, (int) meteorPath.getyEndMeteorLine());
+
+
+      //      path.lineTo(100, 100);
+         //   path.close();
+           // path.offset(10, 40);
+            paint.setTextSize(40);
+            canvas.drawTextOnPath(String.valueOf(curMeteor.getNumber()), path, 5, 0, paint);
+            canvas.drawPath(path, paint);
+
         }
         // сохраняем карту с прорисованными линиями
         savePictToStorage(newBitmap, MapProperties.NAME_RESULT_MAP);

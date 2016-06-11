@@ -143,7 +143,7 @@ public class CreateExpeditionActivity extends AppCompatActivity implements View.
                     @Override
                     public void run() {
                         try {
-                            Thread.sleep(3500); // As I am using LENGTH_LONG in Toast
+                            Thread.sleep(3000); // As I am using LENGTH_LONG in Toast
                             finish();
                         } catch (Exception e) {
                             e.printStackTrace();

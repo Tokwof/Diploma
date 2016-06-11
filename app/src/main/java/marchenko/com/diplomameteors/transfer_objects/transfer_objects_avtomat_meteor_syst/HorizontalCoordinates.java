@@ -6,7 +6,6 @@ import marchenko.com.diplomameteors.transfer_objects.transfer_objects_general.Me
 
 public class HorizontalCoordinates {
     private String TAG = "MY_TAG";
-  //  Meteor meteor;
     /**
      * Горизонтальные координаты:
      * 1) азимут (соответствует параметру P’)
@@ -42,12 +41,12 @@ public class HorizontalCoordinates {
     }
 
     /**
-     * Расчёт астрономического азимута
+     * Расчёт астрономического азимута от севера
      * @param pprime P' в градусном значении
      */
     public void countAzimuth(double pprime) {
         Log.d(TAG, "pprime="+pprime);
-        this.azimuth = (180 + pprime) % 360;
+        this.azimuth = pprime % 360;
         Log.d(TAG, "azimuth="+azimuth);
     }
 }

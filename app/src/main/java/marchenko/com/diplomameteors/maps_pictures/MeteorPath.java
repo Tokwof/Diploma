@@ -51,7 +51,34 @@ public class MeteorPath {
      * исчем координаты центра траектории метеора (х, у) для нанесения на карту
      */
     public void countMiddleMeteorPointCoord(double hourAngleInDegree, double declension, double numberOfQuadrant) {
-        this.numberOfQuadrant = numberOfQuadrant;
+        double hourAngleInHour = hourAngleInDegree/15.0;
+
+        if((hourAngleInHour > 0) && (hourAngleInHour < 6)) {//1 квадрант
+            this.numberOfQuadrant = 1;
+        }
+        if((hourAngleInHour > 6) && (hourAngleInHour < 12)) {//4 квадрант
+            this.numberOfQuadrant = 4;
+        }
+        if((hourAngleInHour > 12) && (hourAngleInHour < 18)) {//3 квадрант
+            this.numberOfQuadrant = 3;
+        }
+        if((hourAngleInHour > 18) && (hourAngleInHour < 24)) {//2 квадрант
+            this.numberOfQuadrant = 2;
+        }
+        // если на границах квадратнтов
+        if(hourAngleInHour == 6) {
+            this.numberOfQuadrant = 1.4;
+        }
+        if(hourAngleInHour == 12) {
+            this.numberOfQuadrant = 3.4;
+        }
+        if(hourAngleInHour == 18) {
+            this.numberOfQuadrant = 2.3;
+        }
+        if((hourAngleInHour == 0) || (hourAngleInHour == 24)) {
+            this.numberOfQuadrant = 2.1;
+        }
+
         // находим точку в пикселях, через которую
         // сколько отступать влево от 6-ти в пикселях
         double part = MapProperties.HOR_RADIUS / 90.0 * declension;//575,195
@@ -116,9 +143,9 @@ public class MeteorPath {
         }
 
         if (numberOfQuadrant == 4) {
-            if (x1 > 0 && y1 > 0) {
+            if (x1 > 0 && y1 < 0) {
                 setXY(x1, y1);
-            } else if (x2 > 0 && y2 > 0) {
+            } else if (x2 > 0 && y2 < 0) {
                 setXY(x2, y2);
             } else {
                 printErrorMess();
@@ -256,7 +283,7 @@ public class MeteorPath {
 //                changeXplaces(b1_x, b2_x);
 //            }
 //        }
-          Log.d(TAG,"b1_x = "+b1_x + "\t; b2_x = "+b2_x+";\nb1_y = "+b1_y + "\t; b2_y[i] = "+b2_y);
+          Log.d(TAG,"b1_x = "+b1_x + "\t; b2_x = "+b2_x+";\nb1_y = "+b1_y + "\t; b2_y = "+b2_y);
         Log.d(TAG, "L = "+ L);
 
     }
